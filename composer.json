@@ -9,7 +9,7 @@
             "email": "alex.p.panteleev@gmail.com"
         }
     ],
-    "minimum-stability": "stable",
+    "minimum-stability": "dev",
     "require": {
         "php": ">=7.1"
     },
