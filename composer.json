@@ -2,7 +2,7 @@
     "name": "alexp007/bx-helper",
     "description": "Usefull helper for bitrix modern projects",
     "type": "library",
-    "license": "Apache License",
+    "license": "Apache-2.0",
     "authors": [
         {
             "name": "AlexP007",
