@@ -30,7 +30,7 @@ abstract class Element
      *
      * Содержимое
      */
-    private $content;
+    private $content = null;
 
     public final function __construct(array $attributes = array() )
     {
