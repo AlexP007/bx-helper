@@ -10,7 +10,7 @@ use BxHelper\Exception\ParameterException;
  * Class Element
  * @package BxHelper\Html
  *
- * @author AlexP
+ * @author AlexP007
  * @email alex.p.panteleev@gmail.com
  * @link https://github.com/AlexP007/bx-helper
  */

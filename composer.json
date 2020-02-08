@@ -1,11 +1,11 @@
 {
-    "name": "alexp/bx-helper",
+    "name": "alexp007/bx-helper",
     "description": "Usefull helper for bitrix modern projects",
     "type": "library",
     "license": "Apache License 2.0",
     "authors": [
         {
-            "name": "AlexP",
+            "name": "AlexP007",
             "email": "alex.p.panteleev@gmail.com"
         }
     ],
