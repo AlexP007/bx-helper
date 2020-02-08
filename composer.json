@@ -10,7 +10,7 @@
         }
     ],
     "minimum-stability": "dev",
-    "prefer-stable": true,
+    "prefer-stable": 'dev',
     "require": {
         "php": ">=7.1"
     },
