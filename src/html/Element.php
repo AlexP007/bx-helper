@@ -6,6 +6,14 @@ namespace BxHelper\Html;
 use BxHelper\Collection\StringCollection;
 use BxHelper\Exception\ParameterException;
 
+/**
+ * Class Element
+ * @package BxHelper\Html
+ *
+ * @author AlexP
+ * @email alex.p.panteleev@gmail.com
+ * @link https://github.com/AlexP007/bx-helper
+ */
 abstract class Element
 {
     /**
@@ -16,7 +24,7 @@ abstract class Element
     /**
      * @var bool
      *
-     * Есть ли закрывающий тэг
+     * If closingTag exists
      */
     protected $closingTag;
 
@@ -28,7 +36,7 @@ abstract class Element
     /**
      * @var string
      *
-     * Содержимое
+     * Content of the element
      */
     private $content = null;
 
@@ -37,6 +45,34 @@ abstract class Element
         if (!empty($attributes) ) {
             $this->setAttributes($attributes);
         }
+
+        $this->init();
+    }
+
+    /**
+     * This function need to be implemented
+     * by child to set name and closingTag
+     * by calling setName() and setClosingTag()
+     */
+    protected abstract function init();
+
+    /**
+     * This function is setting
+     * the name of the element
+     */
+    protected function setName(string $name)
+    {
+        $this->name = $name;
+    }
+
+    /**
+     * This function is setting bool:
+     * is there a closingTag for
+     * this element
+     */
+    protected function setClosingTag(bool $value)
+    {
+        $this->closingTag = $value;
     }
 
     public function render()
@@ -44,7 +80,7 @@ abstract class Element
         $openTag = "<{$this->name}";
 
         $attributesString = $this->getAttributes();
-        $endTag = $this->closingTag ? "<$this->name>" : '';
+        $endTag = $this->closingTag ? "</$this->name>" : '';
 
         return $openTag . $attributesString . '>' . $this->content . $endTag;
     }
@@ -89,8 +125,4 @@ abstract class Element
 
         return rtrim($result);
     }
-
-    protected abstract function setName();
-
-    protected abstract function setClosingTag();
 }
