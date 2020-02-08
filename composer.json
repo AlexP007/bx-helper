@@ -1,0 +1,19 @@
+{
+    "name": "alexp/bx-helper",
+    "description": "Usefull helper for bitrix modern projects",
+    "type": "library",
+    "license": "Apache License 2.0",
+    "authors": [
+        {
+            "name": "AlexP",
+            "email": "alex.p.panteleev@gmail.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {
+        "php": ">=7.1"
+    },
+    "autoload": {
+        "psr-4": {"BxHelper\\": "src/"}
+    }
+}
