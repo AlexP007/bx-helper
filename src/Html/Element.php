@@ -3,8 +3,9 @@
 
 namespace BxHelper\Html;
 
-use BxHelper\Collection\StringCollection;
-use BxHelper\Exception\ParameterException;
+use BxHelper\Traits\Thrower,
+    BxHelper\Collection\StringCollection,
+    BxHelper\Exception\ParameterException;
 
 /**
  * Class Element
@@ -16,6 +17,8 @@ use BxHelper\Exception\ParameterException;
  */
 abstract class Element
 {
+    use Thrower;
+
     /**
      * @var string
      */
@@ -87,9 +90,7 @@ abstract class Element
 
     public function setContent(string $content)
     {
-        if ($this->closingTag) {
-            throw new ParameterException('Single tags cannot have content');
-        }
+        self::ensureParameter($this->closingTag, 'Single tags cannot have content');
 
         $this->content = $content;
     }
