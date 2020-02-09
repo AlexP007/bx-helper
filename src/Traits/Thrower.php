@@ -9,7 +9,14 @@ use BxHelper\Exception\{
     ParameterException
 };
 
-
+/**
+ * Trait Thrower
+ * @package BxHelper\Traits
+ *
+ * @author AlexP007
+ * @email alex.p.panteleev@gmail.com
+ * @link https://github.com/AlexP007/bx-helper
+ */
 trait Thrower
 {
     protected static function ensure(bool $expr, string $message)

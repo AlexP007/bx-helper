@@ -4,8 +4,8 @@
 namespace BxHelper\Html;
 
 use BxHelper\Traits\Thrower,
-    BxHelper\Collection\StringCollection,
-    BxHelper\Exception\ParameterException;
+    BxHelper\Collection\StringCollection;
+
 
 /**
  * Class Element
@@ -29,7 +29,7 @@ abstract class Element
      *
      * If closingTag exists
      */
-    protected $closingTag;
+    protected $closingTag = false;
 
     /**
      * @var StringCollection
@@ -69,13 +69,12 @@ abstract class Element
     }
 
     /**
-     * This function is setting bool:
-     * is there a closingTag for
-     * this element
+     * This function is setting
+     * closingTag = true
      */
-    protected function setClosingTag(bool $value)
+    protected function setClosingTag()
     {
-        $this->closingTag = $value;
+        $this->closingTag = true;
     }
 
     public function render()
