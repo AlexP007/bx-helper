@@ -82,11 +82,11 @@ abstract class Element
         $this->closingTag = true;
     }
 
-    public function render()
+    public function render(): string
     {
         $openTag = "<{$this->name}";
 
-        $attributesString = $this->getAttributes();
+        $attributesString = $this->getAttributesString();
         $endTag = $this->closingTag ? "</$this->name>" : '';
 
         return $openTag . $attributesString . '>' . $this->content . $endTag;
@@ -107,7 +107,7 @@ abstract class Element
         $this->attributes = $collection;
     }
 
-    private function getAttributes()
+    private function getAttributesString(): string
     {
         if (!$this->attributes) {
             return '';
@@ -137,5 +137,10 @@ abstract class Element
         $collection->setArrayToCollection($options);
 
         $this->options = $collection;
+    }
+
+    protected function getOption(string $key): string
+    {
+        return $this->options->$key;
     }
 }

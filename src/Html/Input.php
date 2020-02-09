@@ -13,8 +13,36 @@ namespace BxHelper\Html;
  */
 class Input extends Element
 {
+    /**
+     * @var Label
+     */
+    private $label;
+
+    /**
+     * @var bool
+     */
+    private $labelPositionBefore;
+
     protected function init()
     {
         $this->setName('input');
+    }
+
+    public function setLabel(bool $positionBefore = true, string $content = null, array $attributes = [], array $options = [])
+    {
+        $inputId = $this->getOption('id');
+        self::ensureParameter($inputId, 'To create label you need to specify id for input');
+
+        $attributes['for'] = $inputId;
+
+        $this->labelPositionBefore = $positionBefore;
+
+        $label = new Label($attributes, $options);
+
+        if ($content) {
+            $label->setContent($content);
+        };
+
+        $this->label = $label->render();
     }
 }

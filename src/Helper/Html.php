@@ -28,7 +28,7 @@ class Html
         return [$attributes, $options];
     }
 
-    public static function a(string $content, string $href, array $params = [])
+    public static function a(string $content, string $href, array $params = []): string
     {
         [$attributes, $options] = self::setParams($params);
 
@@ -40,11 +40,15 @@ class Html
         return $elt->render();
     }
 
-    public static function input(string $type, string $value = null, array $params = [])
+    public static function input(string $type, string $name, string $value = null, array $params = []): string
     {
         [$attributes, $options] = self::setParams($params);
 
         $attributes['type'] = $type;
+
+        if ($name) {
+            $attributes['name'] = $name;
+        }
 
         if ($value) {
             $attributes['value'] = $value;
