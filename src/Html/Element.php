@@ -37,13 +37,18 @@ abstract class Element
     private $attributes = null;
 
     /**
+     * @var StringCollection
+     */
+    private $options = null;
+
+    /**
      * @var string
      *
      * Content of the element
      */
     private $content = null;
 
-    public final function __construct(array $attributes = array() )
+    public final function __construct(array $attributes = [], array $options = [])
     {
         if (!empty($attributes) ) {
             $this->setAttributes($attributes);
@@ -124,5 +129,13 @@ abstract class Element
         }
 
         return rtrim($result);
+    }
+
+    private function setOptions(array $options)
+    {
+        $collection = New StringCollection();
+        $collection->setArrayToCollection($options);
+
+        $this->options = $collection;
     }
 }
