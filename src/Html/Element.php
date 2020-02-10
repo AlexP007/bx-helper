@@ -3,9 +3,12 @@
 
 namespace BxHelper\Html;
 
-use BxHelper\Traits\Thrower,
-    BxHelper\Collection\StringCollection;
+use BxHelper\Traits\Thrower;
 
+use BxHelper\Collection\{
+    Collection,
+    StringCollection
+};
 
 /**
  * Class Element
@@ -37,7 +40,7 @@ abstract class Element
     private $attributes = null;
 
     /**
-     * @var StringCollection
+     * @var Collection
      */
     private $options = null;
 
@@ -111,7 +114,7 @@ abstract class Element
         $this->attributes = $collection;
     }
 
-    protected function getAttribute(string $key)
+    protected function getAttribute(string $key): string
     {
         return $this->attributes->$key;
     }
@@ -142,7 +145,7 @@ abstract class Element
 
     private function setOptions(array $options)
     {
-        $collection = New StringCollection();
+        $collection = New Collection();
         $collection->setArrayToCollection($options);
 
         $this->options = $collection;

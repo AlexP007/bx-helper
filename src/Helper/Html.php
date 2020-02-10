@@ -9,7 +9,6 @@ use BxHelper\Html\ {
     Input
 };
 
-
 /**
  * Class Html
  * @package BxHelper\Helper
