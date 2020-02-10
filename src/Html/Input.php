@@ -35,9 +35,9 @@ class Input extends Element
             $this->setLabelPositionBefore($positionBefore);
 
             $this->setLabel(
-                $labelParams['content'],
-                $labelParams['attributes'],
-                $labelParams['options']
+                $labelParams['content'] ?? '',
+                $labelParams['attributes'] ?? [],
+                $labelParams['options'] ?? []
             );
         }
     }
@@ -56,9 +56,9 @@ class Input extends Element
         $this->labelPositionBefore = $positionBefore;
     }
 
-    private function setLabel(string $content = null, array $attributes = [], array $options = [])
+    private function setLabel(string $content, array $attributes, array $options)
     {
-        $inputId = $this->getOption('id');
+        $inputId = $this->getAttribute('id');
         self::ensureParameter($inputId, 'To create label you need to specify id for input');
 
         $attributes['for'] = $inputId;

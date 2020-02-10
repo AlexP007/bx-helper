@@ -48,7 +48,7 @@ abstract class Element
      */
     private $content = null;
 
-    public final function __construct(array $attributes = [], array $options = [])
+    public final function __construct(array $attributes, array $options)
     {
         if (!empty($attributes) ) {
             $this->setAttributes($attributes);
@@ -109,6 +109,11 @@ abstract class Element
         $collection->setArrayToCollection($attributes);
 
         $this->attributes = $collection;
+    }
+
+    protected function getAttribute(string $key)
+    {
+        return $this->attributes->$key;
     }
 
     private function getAttributesString(): string
