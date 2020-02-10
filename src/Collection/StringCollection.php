@@ -4,6 +4,8 @@
 namespace BxHelper\Collection;
 
 
+use BxHelper\Traits\Thrower;
+
 /**
  * Class Collection
  * @package BxHelper
@@ -18,6 +20,8 @@ namespace BxHelper\Collection;
  */
 class StringCollection
 {
+    use Thrower;
+
     private $collection = [];
 
     private $prefix = '';
@@ -29,8 +33,10 @@ class StringCollection
         $this->postfix = $postfix;
     }
 
-    public final function __set(string $name, string $value)
+    public final function __set(string $name, $value)
     {
+        self::ensureParameter(is_array($value) || is_string($value), 'StringCollection can only contain strings and arrays.' );
+
         $this->collection[$name] = $value;
     }
 
@@ -52,7 +58,7 @@ class StringCollection
         }
     }
 
-    public function getCollectionAsArray()
+    public function getCollectionAsArray(): array
     {
         $result = [];
 
