@@ -143,7 +143,7 @@ abstract class Element
         $this->options = $collection;
     }
 
-    protected function getOption(string $key): string
+    protected function getOption(string $key)
     {
         return $this->options->$key;
     }
