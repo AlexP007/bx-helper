@@ -41,7 +41,7 @@ class Input extends Element
         }
     }
 
-    public function setLabel(bool $positionBefore = true, string $content = null, array $attributes = [], array $options = [])
+    private function setLabel(bool $positionBefore = true, string $content = null, array $attributes = [], array $options = [])
     {
         $inputId = $this->getOption('id');
         self::ensureParameter($inputId, 'To create label you need to specify id for input');
