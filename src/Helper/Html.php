@@ -67,4 +67,39 @@ class Html
     {
         return self::input('submit', $name, $value, $params);
     }
+
+    public static function checkbox($name, $value = null, array $params = []): string
+    {
+        return self::input('checkbox', $name, $value, $params);
+    }
+
+    public static function email($name, $value = null, array $params = []): string
+    {
+        return self::input('email', $name, $value, $params);
+    }
+
+    public static function password($name, $value = null, array $params = []): string
+    {
+        return self::input('password', $name, $value, $params);
+    }
+
+    public static function file($name, $value = null, array $params = []): string
+    {
+        return self::input('file', $name, $value, $params);
+    }
+
+    public static function reset($name, $value = null, array $params = []): string
+    {
+        return self::input('reset', $name, $value, $params);
+    }
+
+    public static function search($name, $value = null, array $params = []): string
+    {
+        return self::input('search', $name, $value, $params);
+    }
+
+    public static function radio($name, $value = null, array $params = []): string
+    {
+        return self::input('radio', $name, $value, $params);
+    }
 }
