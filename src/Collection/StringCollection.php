@@ -18,11 +18,9 @@ use BxHelper\Traits\Thrower;
  * could set  string prefix
  * and postfix
  */
-class StringCollection
+class StringCollection extends Collection
 {
     use Thrower;
-
-    private $collection = [];
 
     private $prefix = '';
     private $postfix = '';
@@ -33,43 +31,20 @@ class StringCollection
         $this->postfix = $postfix;
     }
 
-    public final function __set(string $name, $value)
+    public function __set(string $name, $value)
     {
-        self::ensureParameter(is_array($value) || is_string($value), 'StringCollection can only contain strings and arrays.' );
+        self::ensureParameter(is_string($value), 'StringCollection can only contain strings');
 
-        $this->collection[$name] = $value;
+        parent::__set($name, $value);
     }
 
-    public function __get(string $name)
+    public function __get(string $name): string
     {
-        $value = $this->collection[$name];
-
-        if (is_array($value) ) {
-            return $value;
-        }
+        $value = parent::__get($name);
 
         $prefix = $this->prefix;
         $postfix = $this->postfix;
 
         return $prefix . $value . $postfix;
-    }
-
-    public function setArrayToCollection(array $values)
-    {
-        foreach ($values as $key => $value)
-        {
-            $this->$key = $value;
-        }
-    }
-
-    public function getCollectionAsArray(): array
-    {
-        $result = [];
-
-        foreach ($this->collection as $key => $val) {
-            $result[$key] = $this->$key;
-        }
-
-        return $result;
     }
 }
