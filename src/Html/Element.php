@@ -101,7 +101,7 @@ abstract class Element
 
     public function setContent(string $content)
     {
-        self::ensureParameter($this->closingTag, 'Single tags cannot have content');
+        self::ensureParameter($this->closingTag, 'Single element cannot have content');
 
         $this->content = $content;
     }
