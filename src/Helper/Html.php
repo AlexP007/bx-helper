@@ -22,7 +22,7 @@ class Html
 {
     private static function setParams(array $params)
     {
-        $attributes = $params['attr'] ?? [];
+        $attributes = $params['attributes'] ?? [];
         $options = $params['options'] ?? [];
 
         return [$attributes, $options];

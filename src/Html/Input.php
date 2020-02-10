@@ -26,6 +26,19 @@ class Input extends Element
     protected function init()
     {
         $this->setName('input');
+
+        $labelParams = $this->getOption('label');
+
+        if (isset($labelParams) ) {
+            $position = $labelParams['position'] === 'before' ? true : false;
+
+            $this->setLabel(
+                $position,
+                $labelParams['content'],
+                $labelParams['attributes'],
+                $labelParams['options']
+            );
+        }
     }
 
     public function setLabel(bool $positionBefore = true, string $content = null, array $attributes = [], array $options = [])

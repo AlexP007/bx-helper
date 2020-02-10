@@ -54,6 +54,10 @@ abstract class Element
             $this->setAttributes($attributes);
         }
 
+        if (!empty($options) ) {
+            $this->setOptions($options);
+        }
+
         $this->init();
     }
 
