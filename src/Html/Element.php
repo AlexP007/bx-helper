@@ -91,12 +91,10 @@ abstract class Element
 
     public function render(): string
     {
-        $openTag = "<{$this->name}";
-
-        $attributesString = $this->getAttributesString();
+        $openTag = "<{$this->name}" . $this->getAttributesString() . ">";
         $endTag = $this->closingTag ? "</$this->name>" : '';
 
-        return $openTag . $attributesString . '>' . $this->content . $endTag;
+        return $openTag . $this->content . $endTag;
     }
 
     public function setContent(string $content)
