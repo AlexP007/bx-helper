@@ -57,4 +57,9 @@ class Html
 
         return $elt->render();
     }
+
+    public static function hidden($name, $value = null, array $params = []): string
+    {
+        return self::input('hidden', $name, $value, $params);
+    }
 }
