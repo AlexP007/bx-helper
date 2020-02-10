@@ -44,6 +44,10 @@ class StringCollection
     {
         $value = $this->collection[$name];
 
+        if (is_array($value) ) {
+            return $value;
+        }
+
         $prefix = $this->prefix;
         $postfix = $this->postfix;
 
