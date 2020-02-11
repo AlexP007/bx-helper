@@ -4,10 +4,7 @@
 namespace BxHelper\Helper;
 
 
-use BxHelper\Html\ {
-    A,
-    Input
-};
+use BxHelper\Html\{A, Input, Label};
 
 /**
  * Class Html
@@ -27,13 +24,29 @@ class Html
         return [$attributes, $options];
     }
 
-    public static function a(string $content, string $href, array $params = []): string
+    public static function a(string $content, string $href = null, array $params = []): string
     {
         [$attributes, $options] = self::setParams($params);
 
-        $attributes['href'] = $href;
+        if ($href) {
+            $attributes['href'] = $href;
+        }
 
         $elt = new A($attributes, $options);
+        $elt->setContent($content);
+
+        return $elt->render();
+    }
+
+    public static function Label(string $content, string $for = null, array $params = []): string
+    {
+        [$attributes, $options] = self::setParams($params);
+
+        if ($for) {
+            $attributes['for'] = $for;
+        }
+
+        $elt = new Label($attributes, $options);
         $elt->setContent($content);
 
         return $elt->render();
