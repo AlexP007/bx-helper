@@ -20,17 +20,9 @@ class Html
 {
     use Thrower;
 
-    private static function setParams(array $params)
-    {
-        $attributes = $params['attributes'] ?? [];
-        $options = $params['options'] ?? [];
-
-        return [$attributes, $options];
-    }
-
     public static function a(string $content, string $href = null, array $params = []): string
     {
-        [$attributes, $options] = self::setParams($params);
+        $attributes = $params['attributes'] ?? [];
 
         if ($href) {
             $attributes['href'] = $href;
@@ -44,7 +36,7 @@ class Html
 
     public static function Label(string $content, string $for = null, array $params = []): string
     {
-        [$attributes, $options] = self::setParams($params);
+        $attributes = $params['attributes'] ?? [];
 
         if ($for) {
             $attributes['for'] = $for;
@@ -58,7 +50,7 @@ class Html
 
     public static function input(string $type, string $name, string $value = null, array $params = []): string
     {
-        [$attributes, $options] = self::setParams($params);
+        $attributes = $params['attributes'] ?? [];
 
         $attributes['type'] = $type;
 
@@ -73,13 +65,14 @@ class Html
         $elt = new Input($attributes);
         $label = '';
 
-        if (!empty($options['label']) ) {
+        if (!empty($params['label']) ) {
             $inputId = $elt->getAttribute('id');
             self::ensureParameter($inputId, 'To create label you need to specify id for input');
 
-            $positionBefore = $options['label']['position'] === 'before' ? true : false;
+            $positionBefore = $params['label']['position'] === 'before' ? true : false;
+            $content = $params['label']['content'] ?? '';
 
-            $label = self::Label($options['label']['content'], $inputId, $options['label']);
+            $label = self::Label($content, $inputId, $params['label']);
 
             if ($positionBefore) {
                 return $label . $elt->render();
@@ -141,7 +134,7 @@ class Html
 
     public static function option($content, $value = null, array $params = []): string
     {
-        [$attributes, $options] = self::setParams($params);
+        $attributes = $params['attributes'] ?? [];
 
         if ($value) {
             $attributes['value'] = $value;
