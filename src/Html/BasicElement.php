@@ -59,7 +59,7 @@ abstract class BasicElement
 
     protected function setAttributes(array $attributes)
     {
-        $collection = New StringCollection();
+        $collection = new StringCollection();
         $collection->setArrayToCollection($attributes);
 
         $this->attributes = $collection;

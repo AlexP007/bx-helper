@@ -4,7 +4,7 @@
 namespace BxHelper\Helper;
 
 
-use BxHelper\Html\{A, Input, Label, Option, Select};
+use BxHelper\Html\{A, Input, Label, Option, Select, Button};
 use BxHelper\Traits\Thrower;
 
 /**
@@ -152,5 +152,26 @@ class Html
         }
 
         return $select->render();
+    }
+
+    public static function button(string $name = null, string $content = null, string $type = null, array $params = [] ): string
+    {
+        $attributes = $params['attributes'] ?? [];
+
+        if ($name) {
+            $attributes['name'] = $name;
+        }
+
+        if ($type) {
+            $attributes['type'] = $type;
+        }
+
+        $button = new Button($attributes);
+
+        if ($content) {
+            $button->setContent($content);
+        }
+
+        return $button->render();
     }
 }
