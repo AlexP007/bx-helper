@@ -145,19 +145,7 @@ class Html
 
         $select = new Select($attributes);
 
-        if (!empty($options) ) {
-            $optionsString = '';
-
-            foreach ($options as $item) {
-                self::ensureParameter(is_array($item), 'Options must be an array of arrays');
-
-                $optionParams = $item['params'] ?? [];
-
-                $optionsString .= self::option($item['content'], $item['value'], $optionParams);
-            }
-
-            $select->setContent($optionsString);
-        }
+        empty($options) or $select->setContent(Option::renderFromArray($options) );
 
         if (!empty($params['label']) ) {
             return Label::withLabel($select, $params['label']);
