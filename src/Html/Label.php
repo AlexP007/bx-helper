@@ -25,7 +25,7 @@ class Label extends Element
         $this->setName('label');
     }
 
-    public static function withLabel(EmptyElement $elt, array $params)
+    public static function withLabel(BasicElement $elt, array $params)
     {
         $inputId = $elt->getAttribute('id');
         self::ensureParameter($inputId, 'To create label you need to specify id for input');
@@ -35,10 +35,6 @@ class Label extends Element
 
         $label = Html::Label($content, $inputId, $params);
 
-        if ($positionBefore) {
-            return $label . $elt->render();
-        }
-
-        return $elt->render() . $label;
+        return $positionBefore ? $label . $elt->render() : $elt->render() . $label;
     }
 }
