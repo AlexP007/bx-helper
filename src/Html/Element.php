@@ -13,7 +13,7 @@ namespace BxHelper\Html;
  * @email alex.p.panteleev@gmail.com
  * @link https://github.com/AlexP007/bx-helper
  */
-abstract class Element extends EmptyElement
+abstract class Element extends BasicElement
 {
     /**
      * @var string
@@ -24,7 +24,8 @@ abstract class Element extends EmptyElement
 
     public function render(): string
     {
-        return parent::render() . $this->content . "</$this->name>";
+        return "<{$this->name}" . $this->getAttributesString() . ">"
+            . $this->content . "</$this->name>";
     }
 
     public function setContent(string $content)
