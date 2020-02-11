@@ -27,12 +27,25 @@ abstract class BasicElement
      */
     private $attributes = null;
 
+    public final function __construct(array $attributes)
+    {
+        if (!empty($attributes) ) {
+            $this->setAttributes($attributes);
+        }
+
+        $this->init();
+    }
+
     /**
      * This function need to be implemented
      * by child to set name by calling setName()
      */
     protected abstract function init();
 
+    /**
+     * In this function you need to return
+     * the html valid string of the element
+     */
     protected abstract function render(): string;
 
     /**
@@ -67,8 +80,7 @@ abstract class BasicElement
 
         $attributes = $this->attributes->getCollectionAsArray();
 
-        foreach ($attributes as $key => $value)
-        {
+        foreach ($attributes as $key => $value) {
             $attribute = strtolower($key);
 
             if (is_null($value) ) {

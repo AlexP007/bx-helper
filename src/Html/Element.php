@@ -22,13 +22,16 @@ abstract class Element extends BasicElement
      */
     private $content = null;
 
-    public function render(): string
+    public final function render(): string
     {
         return "<{$this->name}" . $this->getAttributesString() . ">"
             . $this->content . "</$this->name>";
     }
 
-    public function setContent(string $content)
+    /**
+     * @param string $content
+     */
+    public final function setContent(string $content)
     {
         $this->content = $content;
     }

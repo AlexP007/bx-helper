@@ -4,8 +4,6 @@
 namespace BxHelper\Html;
 
 
-use BxHelper\Collection\StringCollection;
-
 /**
  * Class Element
  * @package BxHelper\Html
@@ -17,16 +15,7 @@ use BxHelper\Collection\StringCollection;
  */
 abstract class EmptyElement extends BasicElement
 {
-    public final function __construct(array $attributes)
-    {
-        if (!empty($attributes) ) {
-            $this->setAttributes($attributes);
-        }
-
-        $this->init();
-    }
-
-    public function render(): string
+    public final function render(): string
     {
         return "<{$this->name}" . $this->getAttributesString() . ">";
     }
