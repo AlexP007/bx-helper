@@ -19,4 +19,23 @@ class Select extends Element
     {
         $this->setName('select');
     }
+
+    public static function render(string $name, array $options = [],  array $params = []): string
+    {
+        $attributes = $params['attributes'] ?? [];
+
+        if ($name) {
+            $attributes['name'] = $name;
+        }
+
+        $select = new Select($attributes);
+
+        empty($options) or $select->setContent(Option::renderFromArray($options) );
+
+        if (!empty($params['label']) ) {
+            return Label::withLabel($select, $params['label']);
+        }
+
+        return $select->renderHtml();
+    }
 }

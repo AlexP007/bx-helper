@@ -19,4 +19,27 @@ class Input extends EmptyElement
     {
         $this->setName('input');
     }
+
+    public static function render(string $type, string $name = null, string $value = null, array $params = []): string
+    {
+        $attributes = $params['attributes'] ?? [];
+
+        $attributes['type'] = $type;
+
+        if ($name) {
+            $attributes['name'] = $name;
+        }
+
+        if ($value) {
+            $attributes['value'] = $value;
+        }
+
+        $input = new self($attributes);
+
+        if (!empty($params['label']) ) {
+            return Label::withLabel($input, $params['label']);
+        }
+
+        return $input->renderHtml();
+    }
 }

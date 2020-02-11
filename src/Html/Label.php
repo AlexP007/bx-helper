@@ -5,7 +5,6 @@ namespace BxHelper\Html;
 
 
 use BxHelper\Traits\Thrower;
-use BxHelper\Helper\Html;
 
 /**
  * Class Label
@@ -25,6 +24,20 @@ class Label extends Element
         $this->setName('label');
     }
 
+    public static function render(string $content, string $for = null, array $params = []): string
+    {
+        $attributes = $params['attributes'] ?? [];
+
+        if ($for) {
+            $attributes['for'] = $for;
+        }
+
+        $label = new Label($attributes);
+        $label->setContent($content);
+
+        return $label->renderHtml();
+    }
+
     public static function withLabel(BasicElement $elt, array $params)
     {
         $inputId = $elt->getAttribute('id');
@@ -33,7 +46,7 @@ class Label extends Element
         $positionBefore = $params['position'] === 'before' ? true : false;
         $content = $params['content'] ?? '';
 
-        $label = Html::Label($content, $inputId, $params);
+        $label = self::render($content, $inputId, $params);
 
         return $positionBefore ? $label . $elt->renderHtml() : $elt->renderHtml() . $label;
     }

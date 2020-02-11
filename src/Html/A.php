@@ -19,4 +19,18 @@ class A extends Element
    {
        $this->setName('a');
    }
+
+   public static function render(string $content, string $href = null, array $params = []): string
+   {
+       $attributes = $params['attributes'] ?? [];
+
+       if ($href) {
+           $attributes['href'] = $href;
+       }
+
+       $a = new A($attributes);
+       $a->setContent($content);
+
+       return $a->renderHtml();
+   }
 }

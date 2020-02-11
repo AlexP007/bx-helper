@@ -5,7 +5,6 @@ namespace BxHelper\Html;
 
 
 use BxHelper\Traits\Thrower;
-use BxHelper\Helper\Html;
 
 /**
  * Class Option
@@ -25,6 +24,20 @@ class Option extends Element
         $this->setName('option');
     }
 
+    public static function render(string $content, string $value = null, array $params = []): string
+    {
+        $attributes = $params['attributes'] ?? [];
+
+        if ($value) {
+            $attributes['value'] = $value;
+        }
+
+        $option = new Option($attributes);
+        $option->setContent($content);
+
+        return $option->renderHtml();
+    }
+
     public static function renderFromArray(array $array): string
     {
         $optionsString = '';
@@ -34,7 +47,7 @@ class Option extends Element
 
             $optionParams = $item['params'] ?? [];
 
-            $optionsString .= Html::option($item['content'], $item['value'], $optionParams);
+            $optionsString .= self::render($item['content'], $item['value'], $optionParams);
         }
 
         return $optionsString;
