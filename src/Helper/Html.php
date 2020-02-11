@@ -63,23 +63,12 @@ class Html
         }
 
         $elt = new Input($attributes);
-        $label = '';
 
         if (!empty($params['label']) ) {
-            $inputId = $elt->getAttribute('id');
-            self::ensureParameter($inputId, 'To create label you need to specify id for input');
-
-            $positionBefore = $params['label']['position'] === 'before' ? true : false;
-            $content = $params['label']['content'] ?? '';
-
-            $label = self::Label($content, $inputId, $params['label']);
-
-            if ($positionBefore) {
-                return $label . $elt->render();
-            }
+            return Label::withLabel($elt, $params['label']);
         }
 
-        return $elt->render() . $label;
+        return $elt->render();
     }
 
     public static function hidden($name, $value = null, array $params = []): string
