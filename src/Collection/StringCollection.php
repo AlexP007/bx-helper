@@ -30,7 +30,10 @@ class StringCollection extends Collection
 
     public function __set(string $name, $value)
     {
-        self::ensureParameter(is_string($value), 'StringCollection can only contain strings');
+        self::ensureParameter(
+            is_string($value) || is_null($value),
+            'StringCollection can only be strings or null'
+        );
 
         parent::__set($name, $value);
     }
