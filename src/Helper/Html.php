@@ -149,7 +149,11 @@ class Html
             $optionsString = '';
 
             foreach ($options as $item) {
-                $optionsString .= self::option($item['content'], $item['value'], $item['params']);
+                self::ensureParameter(is_array($item), 'Options must be an array of arrays');
+
+                $optionParams = $item['params'] ?? [];
+
+                $optionsString .= self::option($item['content'], $item['value'], $optionParams);
             }
 
             $select->setContent($optionsString);
