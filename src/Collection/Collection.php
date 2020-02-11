@@ -7,6 +7,7 @@ namespace BxHelper\Collection;
 /**
  * Class Collection
  * @package BxHelper\Collection
+ * @license Apache-2.0
  *
  * @author AlexP007
  * @email alex.p.panteleev@gmail.com

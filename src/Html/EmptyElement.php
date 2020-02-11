@@ -12,6 +12,7 @@ use BxHelper\Collection\{
 /**
  * Class Element
  * @package BxHelper\Html
+ * @license Apache-2.0
  *
  * @author AlexP007
  * @email alex.p.panteleev@gmail.com
