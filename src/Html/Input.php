@@ -19,13 +19,4 @@ class Input extends EmptyElement
     {
         $this->setName('input');
     }
-
-    public function render(): string
-    {
-        if ($this->labelPositionBefore) {
-            return $this->label->render() . parent::render();
-        }
-
-        return parent::render() . $this->label->render();
-    }
 }
