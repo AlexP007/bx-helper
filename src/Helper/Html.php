@@ -4,7 +4,7 @@
 namespace BxHelper\Helper;
 
 
-use BxHelper\Html\{A, Input, Label};
+use BxHelper\Html\{A, Input, Label, Option};
 
 /**
  * Class Html
@@ -119,5 +119,19 @@ class Html
     public static function radio($name, $value = null, array $params = []): string
     {
         return self::input('radio', $name, $value, $params);
+    }
+
+    public static function option($content, $value = null, array $params = []): string
+    {
+        [$attributes, $options] = self::setParams($params);
+
+        if ($value) {
+            $attributes['value'] = $value;
+        }
+
+        $elt = new Option($attributes, $options);
+        $elt->setContent($content);
+
+        return $elt->render();
     }
 }
