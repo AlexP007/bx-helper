@@ -15,7 +15,7 @@ namespace BxHelper\Html;
  */
 abstract class EmptyElement extends BasicElement
 {
-    public final function render(): string
+    public final function renderHtml(): string
     {
         return "<{$this->name}" . $this->getAttributesString() . ">";
     }

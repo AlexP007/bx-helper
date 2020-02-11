@@ -35,6 +35,6 @@ class Label extends Element
 
         $label = Html::Label($content, $inputId, $params);
 
-        return $positionBefore ? $label . $elt->render() : $elt->render() . $label;
+        return $positionBefore ? $label . $elt->renderHtml() : $elt->renderHtml() . $label;
     }
 }

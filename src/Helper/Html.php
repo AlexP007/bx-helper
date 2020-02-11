@@ -31,7 +31,7 @@ class Html
         $a = new A($attributes);
         $a->setContent($content);
 
-        return $a->render();
+        return $a->renderHtml();
     }
 
     public static function Label(string $content, string $for = null, array $params = []): string
@@ -45,7 +45,7 @@ class Html
         $label = new Label($attributes);
         $label->setContent($content);
 
-        return $label->render();
+        return $label->renderHtml();
     }
 
     public static function input(string $type, string $name, string $value = null, array $params = []): string
@@ -68,7 +68,7 @@ class Html
             return Label::withLabel($input, $params['label']);
         }
 
-        return $input->render();
+        return $input->renderHtml();
     }
 
     public static function hidden(string $name, string $value = null, array $params = []): string
@@ -132,7 +132,7 @@ class Html
         $option = new Option($attributes);
         $option->setContent($content);
 
-        return $option->render();
+        return $option->renderHtml();
     }
 
     public static function select(string $name, array $options = [],  array $params = []): string
@@ -151,7 +151,7 @@ class Html
             return Label::withLabel($select, $params['label']);
         }
 
-        return $select->render();
+        return $select->renderHtml();
     }
 
     public static function button(string $name = null, string $content = null, string $type = null, array $params = [] ): string
@@ -172,6 +172,6 @@ class Html
             $button->setContent($content);
         }
 
-        return $button->render();
+        return $button->renderHtml();
     }
 }

@@ -46,7 +46,7 @@ abstract class BasicElement
      * In this function you need to return
      * the html valid string of the element
      */
-    protected abstract function render(): string;
+    public abstract function renderHtml(): string;
 
     /**
      * This function is setting
