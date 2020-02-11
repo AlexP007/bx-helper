@@ -63,6 +63,11 @@ class Html
         return self::input('hidden', $name, $value, $params);
     }
 
+    public static function text($name, $value = null, array $params = []): string
+    {
+        return self::input('text', $name, $value, $params);
+    }
+
     public static function submit($name, $value = null, array $params = []): string
     {
         return self::input('submit', $name, $value, $params);
