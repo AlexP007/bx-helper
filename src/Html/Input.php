@@ -3,6 +3,9 @@
 
 namespace BxHelper\Html;
 
+
+use BxHelper\Traits\Thrower;
+
 /**
  * Class Input
  * @package BxHelper\Html
@@ -11,8 +14,9 @@ namespace BxHelper\Html;
  * @email alex.p.panteleev@gmail.com
  * @link https://github.com/AlexP007/bx-helper
  */
-class Input extends Element
+class Input extends EmptyElement
 {
+    use Thrower;
     /**
      * @var Label
      */

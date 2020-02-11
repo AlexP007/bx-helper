@@ -17,6 +17,5 @@ class Label extends Element
     protected function init()
     {
         $this->setName('label');
-        $this->setClosingTag();
     }
 }
