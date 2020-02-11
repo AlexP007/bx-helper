@@ -4,10 +4,7 @@
 namespace BxHelper\Html;
 
 
-use BxHelper\Collection\{
-    Collection,
-    StringCollection
-};
+use BxHelper\Collection\StringCollection;
 
 /**
  * Class Element
@@ -26,30 +23,14 @@ abstract class EmptyElement
     protected $name;
 
     /**
-     * @var bool
-     *
-     * If closingTag exists
-     */
-    protected $closingTag = false;
-
-    /**
      * @var StringCollection
      */
     private $attributes = null;
 
-    /**
-     * @var Collection
-     */
-    private $options = null;
-
-    public final function __construct(array $attributes, array $options)
+    public final function __construct(array $attributes)
     {
         if (!empty($attributes) ) {
             $this->setAttributes($attributes);
-        }
-
-        if (!empty($options) ) {
-            $this->setOptions($options);
         }
 
         $this->init();
@@ -84,7 +65,7 @@ abstract class EmptyElement
         $this->attributes = $collection;
     }
 
-    protected function getAttribute(string $key): string
+    public function getAttribute(string $key): string
     {
         return $this->attributes->$key;
     }
@@ -111,18 +92,5 @@ abstract class EmptyElement
         }
 
         return rtrim($result);
-    }
-
-    private function setOptions(array $options)
-    {
-        $collection = New Collection();
-        $collection->setArrayToCollection($options);
-
-        $this->options = $collection;
-    }
-
-    protected function getOption(string $key)
-    {
-        return $this->options->$key;
     }
 }

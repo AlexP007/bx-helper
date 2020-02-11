@@ -5,6 +5,7 @@ namespace BxHelper\Helper;
 
 
 use BxHelper\Html\{A, Input, Label, Option};
+use BxHelper\Traits\Thrower;
 
 /**
  * Class Html
@@ -17,6 +18,8 @@ use BxHelper\Html\{A, Input, Label, Option};
  */
 class Html
 {
+    use Thrower;
+
     private static function setParams(array $params)
     {
         $attributes = $params['attributes'] ?? [];
@@ -33,7 +36,7 @@ class Html
             $attributes['href'] = $href;
         }
 
-        $elt = new A($attributes, $options);
+        $elt = new A($attributes);
         $elt->setContent($content);
 
         return $elt->render();
@@ -47,7 +50,7 @@ class Html
             $attributes['for'] = $for;
         }
 
-        $elt = new Label($attributes, $options);
+        $elt = new Label($attributes);
         $elt->setContent($content);
 
         return $elt->render();
@@ -67,9 +70,23 @@ class Html
             $attributes['value'] = $value;
         }
 
-        $elt = new Input($attributes, $options);
+        $elt = new Input($attributes);
+        $label = '';
 
-        return $elt->render();
+        if (!empty($options['label']) ) {
+            $inputId = $elt->getAttribute('id');
+            self::ensureParameter($inputId, 'To create label you need to specify id for input');
+
+            $positionBefore = $options['label']['position'] === 'before' ? true : false;
+
+            $label = self::Label($options['label']['content'], $inputId, $options['label']);
+
+            if ($positionBefore) {
+                return $label . $elt->render();
+            }
+        }
+
+        return $elt->render() . $label;
     }
 
     public static function hidden($name, $value = null, array $params = []): string
@@ -130,7 +147,7 @@ class Html
             $attributes['value'] = $value;
         }
 
-        $elt = new Option($attributes, $options);
+        $elt = new Option($attributes);
         $elt->setContent($content);
 
         return $elt->render();
