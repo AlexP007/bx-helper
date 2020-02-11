@@ -4,6 +4,8 @@
 namespace BxHelper\Collection;
 
 
+use BxHelper\Traits\Thrower;
+
 /**
  * Class Collection
  * @package BxHelper\Collection
@@ -15,6 +17,8 @@ namespace BxHelper\Collection;
  */
 class Collection
 {
+    use Thrower;
+
     protected $collection = [];
 
     public function __set(string $name, $value)
@@ -31,6 +35,8 @@ class Collection
     {
         foreach ($values as $key => $value)
         {
+            self::ensureParameter(is_string($key), 'Collection keys can only be strings');
+
             $this->$key = $value;
         }
     }

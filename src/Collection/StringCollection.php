@@ -4,8 +4,6 @@
 namespace BxHelper\Collection;
 
 
-use BxHelper\Traits\Thrower;
-
 /**
  * Class Collection
  * @package BxHelper
@@ -21,8 +19,6 @@ use BxHelper\Traits\Thrower;
  */
 class StringCollection extends Collection
 {
-    use Thrower;
-
     private $prefix = '';
     private $postfix = '';
 
