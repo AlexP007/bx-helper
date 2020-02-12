@@ -1,11 +1,10 @@
 <?php
 
 
-namespace BxHelper\Registry;
+namespace BxHelper\Config;
 
 
 use BxHelper\Collection\Collection;
-use BxHelper\Exception\ArgumentException;
 use BxHelper\Exception\ParameterException;
 use BxHelper\Traits\Thrower;
 

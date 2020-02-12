@@ -4,6 +4,8 @@
 namespace BxHelper\Html;
 
 
+use BxHelper\Config\HtmlConfig;
+
 /**
  * Class Element
  * @package BxHelper\Html
@@ -33,6 +35,12 @@ abstract class Element extends BasicElement
      */
     public final function setContent(string $content)
     {
-        $this->content = $content;
+        $contentFilter = HtmlConfig::get('content-filter');
+
+        if (isset($contentFilter) && is_callable($contentFilter) ) {
+            $this->content = $contentFilter($content);
+        } else {
+            $this->content = $content;
+        }
     }
 }

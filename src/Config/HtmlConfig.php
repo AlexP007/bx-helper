@@ -4,8 +4,6 @@
 namespace BxHelper\Config;
 
 
-use BxHelper\Registry\Registry;
-
 class HtmlConfig extends Registry
 {
     protected function init()
