@@ -11,7 +11,7 @@ class Optgroup extends Element
         $this->setName('optgroup');
     }
 
-    public static function render(string $label, string $content, array $attributes = []): string
+    public static function render(string $label, string $content, array $attributes): string
     {
         if ($label) {
             $attributes['label'] = $label;
