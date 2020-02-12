@@ -37,6 +37,8 @@ abstract class Registry
     {
         $this->registry = new Collection();
         $this->allowedKeys = new Collection();
+
+        $this->init();
     }
 
     protected abstract function init();
@@ -49,7 +51,7 @@ abstract class Registry
     final function setValue(string $key, $value)
     {
         if ($allowedValue = $this->allowedKeys->$key) {
-            self::ensureParameter(gettype($value) !== $allowedValue, "$value is not a valid type");
+            self::ensureParameter($allowedValue($value), "$value is not a valid type");
         } else {
             throw new ParameterException("$key is not a valid key");
         }
