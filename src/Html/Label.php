@@ -4,8 +4,6 @@
 namespace BxHelper\Html;
 
 
-use BxHelper\Traits\Thrower;
-
 /**
  * Class Label
  * @package BxHelper\Html
@@ -17,14 +15,12 @@ use BxHelper\Traits\Thrower;
  */
 class Label extends Element
 {
-    use Thrower;
-
     protected function init()
     {
         $this->setName('label');
     }
 
-    public static function render(string $content, string $for = null, array $params = []): string
+    public static function render(string $content = null, string $for = null, array $params = []): string
     {
         $attributes = $params['attributes'] ?? [];
 

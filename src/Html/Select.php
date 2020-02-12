@@ -20,8 +20,10 @@ class Select extends Element
         $this->setName('select');
     }
 
-    public static function render(string $name, array $options = [],  array $params = []): string
+    public static function render(string $name = null, $content = null, array $params = []): string
     {
+        self::ensureParameter(is_array($content) || is_string($content), 'Select::render 2nd parameter $content could only be string or array');
+
         $attributes = $params['attributes'] ?? [];
 
         if ($name) {
@@ -30,7 +32,11 @@ class Select extends Element
 
         $select = new Select($attributes);
 
-        empty($options) or $select->setContent(Option::renderFromArray($options) );
+        if (is_array($content) && !empty($content) ) {
+            $select->setContent(Option::renderFromArray($content) );
+        } else {
+            $select->setContent($content);
+        };
 
         if (!empty($params['label']) ) {
             return Label::withLabel($select, $params['label']);

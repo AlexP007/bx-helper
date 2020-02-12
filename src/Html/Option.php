@@ -4,8 +4,6 @@
 namespace BxHelper\Html;
 
 
-use BxHelper\Traits\Thrower;
-
 /**
  * Class Option
  * @package BxHelper\Html
@@ -17,14 +15,12 @@ use BxHelper\Traits\Thrower;
  */
 class Option extends Element
 {
-    use Thrower;
-
     protected function init()
     {
         $this->setName('option');
     }
 
-    public static function render(string $content, string $value = null, array $params = []): string
+    public static function render(string $content = null, string $value = null, array $params = []): string
     {
         $attributes = $params['attributes'] ?? [];
 

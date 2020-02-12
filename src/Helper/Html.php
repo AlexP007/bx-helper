@@ -20,12 +20,12 @@ class Html
 {
     use Thrower;
 
-    public static function a(string $content, string $href = null, array $params = []): string
+    public static function a(string $content = null, string $href = null, array $params = []): string
     {
         return A::render($content, $href, $params);
     }
 
-    public static function Label(string $content, string $for = null, array $params = []): string
+    public static function Label(string $content = null, string $for = null, array $params = []): string
     {
         return Label::render($content, $for, $params);
     }
@@ -85,14 +85,14 @@ class Html
         return self::input('radio', $name, $value, $params);
     }
 
-    public static function option(string $content, string $value = null, array $params = []): string
+    public static function option(string $content = null, string $value = null, array $params = []): string
     {
         return Option::render($content, $value, $params);
     }
 
-    public static function select(string $name, array $options = [],  array $params = []): string
+    public static function select(string $name = null, $content = null,  array $params = []): string
     {
-        return Select::render($name, $options, $params);
+        return Select::render($name, $content, $params);
     }
 
     public static function button(string $name = null, string $content = null, string $type = null, array $params = []): string

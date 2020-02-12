@@ -20,7 +20,7 @@ class A extends Element
        $this->setName('a');
    }
 
-   public static function render(string $content, string $href = null, array $params = []): string
+   public static function render(string $content = null, string $href = null, array $params = []): string
    {
        $attributes = $params['attributes'] ?? [];
 

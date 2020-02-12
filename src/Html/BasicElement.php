@@ -5,6 +5,7 @@ namespace BxHelper\Html;
 
 
 use BxHelper\Collection\StringCollection;
+use BxHelper\Traits\Thrower;
 
 /**
  * Class BasicElement
@@ -17,6 +18,8 @@ use BxHelper\Collection\StringCollection;
  */
 abstract class BasicElement
 {
+    use Thrower;
+
     /**
      * @var string
      */
