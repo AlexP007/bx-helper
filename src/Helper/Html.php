@@ -4,7 +4,7 @@
 namespace BxHelper\Helper;
 
 
-use BxHelper\Html\{A, Input, Label, Option, Select, Button};
+use BxHelper\Html\{A, Input, Label, Optgroup, Option, Select, Button};
 use BxHelper\Traits\Thrower;
 
 /**
@@ -88,6 +88,12 @@ class Html
     public static function option(string $content = null, string $value = null, array $params = []): string
     {
         return Option::render($content, $value, $params);
+    }
+
+    public static function optgroup(string $label, string $content, array $params = []): string
+    {
+        $attributes = $params['attributes'] ?? [];
+        return Optgroup::render($label, $content, $attributes);
     }
 
     public static function select(string $name = null, $content = null,  array $params = []): string

@@ -38,12 +38,16 @@ class Option extends Element
     {
         $optionsString = '';
 
-        foreach ($array as $item) {
-            self::ensureParameter(is_array($item), 'Options must be an array of arrays');
+        foreach ($array as $key => $item) {
+            self::ensureParameter(is_array($item), 'Options must be arrays');
 
-            $optionParams = $item['params'] ?? [];
-
-            $optionsString .= self::render($item['content'], $item['value'], $optionParams);
+            if (is_string($key) ) {
+                $options = self::renderFromArray($item['options']);
+                $optionsString .= Optgroup::render($key, $options, $item['attributes']);
+            } else {
+                $optionParams = $item['params'] ?? [];
+                $optionsString .= self::render($item['content'], $item['value'], $optionParams);
+            }
         }
 
         return $optionsString;
