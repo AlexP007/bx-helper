@@ -43,7 +43,7 @@ class Option extends Element
 
             if (is_string($key) ) {
                 $options = self::renderFromArray($item['options']);
-                $optionsString .= Optgroup::render($key, $options, $item['attributes']);
+                $optionsString .= Optgroup::render($key, $options, $item['attributes'] ?? []);
             } else {
                 $optionParams = $item['params'] ?? [];
                 $optionsString .= self::render($item['content'], $item['value'], $optionParams);
