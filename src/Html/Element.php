@@ -38,7 +38,7 @@ abstract class Element extends BasicElement
         $contentFilter = HtmlConfig::get('content-filter');
 
         if (isset($contentFilter) && is_callable($contentFilter) ) {
-            $this->content = $contentFilter($content);
+            $this->content = call_user_func($contentFilter , $content);
         } else {
             $this->content = $content;
         }

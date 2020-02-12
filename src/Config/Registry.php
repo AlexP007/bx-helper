@@ -50,7 +50,7 @@ abstract class Registry
     final function setValue(string $key, $value)
     {
         if ($allowedValue = $this->allowedKeys->$key) {
-            self::ensureParameter($allowedValue($value), "$value is not a valid type");
+            self::ensureParameter($allowedValue($value), "$key is not a valid value type");
         } else {
             throw new ParameterException("$key is not a valid key");
         }
@@ -84,6 +84,6 @@ abstract class Registry
 
     static function get(string $key)
     {
-        self::getInstance()->getValue($key);
+        return self::getInstance()->getValue($key);
     }
 }
