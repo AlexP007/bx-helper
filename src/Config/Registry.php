@@ -49,8 +49,8 @@ abstract class Registry
 
     final function setValue(string $key, $value)
     {
-        if ($allowedValue = $this->allowedKeys->$key) {
-            self::ensureParameter($allowedValue($value), "$key is not a valid value type");
+        if ($allowedCallback = $this->allowedKeys->$key) {
+            self::ensureParameter(call_user_func($allowedCallback, $value), "$key is not a valid value type");
         } else {
             throw new ParameterException("$key is not a valid key");
         }
