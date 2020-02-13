@@ -1,7 +1,7 @@
 <?php
 
 
-namespace BxHelper\Config;
+namespace BxHelper\Registry;
 
 
 use BxHelper\Collection\Collection;

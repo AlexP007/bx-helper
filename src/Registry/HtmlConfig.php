@@ -1,7 +1,7 @@
 <?php
 
 
-namespace BxHelper\Config;
+namespace BxHelper\Registry;
 
 
 class HtmlConfig extends Registry
