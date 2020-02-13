@@ -21,9 +21,16 @@ class Collection
 
     protected $collection = [];
 
+    private $keys = [];
+
+    public $length = 0;
+
     public function __set(string $name, $value)
     {
+        $this->keys[] = $name;
         $this->collection[$name] = $value;
+
+        ++$this->length;
     }
 
     public function __get(string $name)
@@ -42,10 +49,8 @@ class Collection
 
     public function getIterator(): iterable
     {
-        $keys = array_keys($this->collection);
-
-        for ($i = 0; $i <= count($keys); $i++){
-            $key = $keys[$i];
+        for ($i = 0; $i <= $this->length; $i++){
+            $key = $this->keys[$i];
             $value = $this->$key;
 
             yield $key => $value;
