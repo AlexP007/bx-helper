@@ -4,7 +4,7 @@
 namespace BxHelper\Html;
 
 
-use BxHelper\Config\HtmlConfig;
+use BxHelper\Registry\HtmlConfig;
 
 /**
  * Class Element
