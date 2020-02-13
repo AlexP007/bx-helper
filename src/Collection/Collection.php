@@ -42,8 +42,12 @@ class Collection
 
     public function getIterator(): iterable
     {
-        foreach ($this->collection as $key => $value) {
+        $keys = array_keys($this->collection);
+
+        for ($i = 0; $i <= count($keys); $i++){
+            $key = $keys[$i];
             $value = $this->$key;
+
             yield $key => $value;
         }
     }
