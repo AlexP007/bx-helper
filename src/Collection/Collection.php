@@ -36,19 +36,15 @@ class Collection
         foreach ($values as $key => $value)
         {
             self::ensureParameter(is_string($key), 'Collection keys can only be strings');
-
             $this->$key = $value;
         }
     }
 
-    public function getCollectionAsArray(): array
+    public function getIterator(): iterable
     {
-        $result = [];
-
-        foreach ($this->collection as $key => $val) {
-            $result[$key] = $this->$key;
+        foreach ($this->collection as $key => $value) {
+            $value = $this->$key;
+            yield $key => $value;
         }
-
-        return $result;
     }
 }

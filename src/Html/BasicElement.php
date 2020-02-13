@@ -81,9 +81,7 @@ abstract class BasicElement
 
         $result = ' ';
 
-        $attributes = $this->attributes->getCollectionAsArray();
-
-        foreach ($attributes as $key => $value) {
+        foreach ($this->attributes->getIterator() as $key => $value) {
             $attribute = strtolower($key);
 
             if (is_null($value) ) {
