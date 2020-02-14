@@ -13,9 +13,9 @@ namespace BxHelper\Html;
  * @email alex.p.panteleev@gmail.com
  * @link https://github.com/AlexP007/bx-helper
  */
-abstract class EmptyElement extends BasicElement
+abstract class ElementWithoutContent extends BasicElement
 {
-    public final function renderHtml(): string
+    public final function render(): string
     {
         return "<{$this->name}" . $this->getAttributesString() . ">";
     }

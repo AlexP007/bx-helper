@@ -4,7 +4,7 @@
 namespace BxHelper\Html;
 
 
-class Optgroup extends Element
+class Optgroup extends ElementWithContent
 {
     protected function init()
     {

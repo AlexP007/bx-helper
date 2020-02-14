@@ -13,7 +13,7 @@ namespace BxHelper\Html;
  * @email alex.p.panteleev@gmail.com
  * @link https://github.com/AlexP007/bx-helper
  */
-class A extends Element
+class A extends ElementWithContent
 {
    protected function init()
    {

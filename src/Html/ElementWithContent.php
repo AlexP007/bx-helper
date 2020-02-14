@@ -15,7 +15,7 @@ use BxHelper\Registry\HtmlConfig;
  * @email alex.p.panteleev@gmail.com
  * @link https://github.com/AlexP007/bx-helper
  */
-abstract class Element extends BasicElement
+abstract class ElementWithContent extends HtmlElement
 {
     /**
      * @var string
@@ -24,7 +24,7 @@ abstract class Element extends BasicElement
      */
     private $content = null;
 
-    public final function renderHtml(): string
+    public final function render(): string
     {
         return "<{$this->name}" . $this->getAttributesString() . ">"
             . $this->content . "</$this->name>";
