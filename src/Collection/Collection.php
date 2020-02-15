@@ -49,7 +49,7 @@ class Collection
 
     public function getIterator(): iterable
     {
-        for ($i = 0; $i <= $this->length; $i++){
+        for ($i = 0; $i < $this->length; $i++){
             $key = $this->keys[$i];
             $value = $this->$key;
 
