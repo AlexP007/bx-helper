@@ -5,6 +5,7 @@ namespace BxHelper\Html;
 
 
 use BxHelper\Collection\StringCollection;
+use BxHelper\Domain\Value;
 
 /**
  * Class HtmlElement
@@ -63,6 +64,9 @@ abstract class HtmlElement extends BasicElement
 
     public function getAttribute(string $key): string
     {
+        if ($key === 'value') {
+            return $this->getValue($this->attributes->$key);
+        }
         return $this->attributes->$key;
     }
 
@@ -80,10 +84,18 @@ abstract class HtmlElement extends BasicElement
             if (is_null($value) ) {
                 $result .= "$attribute ";
             } else {
+                if ($key === 'value') {
+                    $value = $this->getValue($value);
+                }
                 $result .= "$attribute=\"$value\" ";
             }
         }
 
         return rtrim($result);
+    }
+
+    private function getValue(string $value)
+    {
+        return (new Value($value) )->getValue();
     }
 }
