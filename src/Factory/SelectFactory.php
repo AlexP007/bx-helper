@@ -24,13 +24,12 @@ class SelectFactory extends HtmlFactory
         if (is_array($content) ) {
 
             if (!isset($params['prompt']) ) {
-                $prompt = [
+                array_unshift($content, [
                     'content' => $params['prompt'],
                     'value' => '',
                     'attributes' => ['disabled' => null]
-                ];
+                ]);
             }
-            array_unshift($content, $prompt);
             $content = OptionFactory::fromArray($content);
         }
 
