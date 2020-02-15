@@ -4,7 +4,7 @@
 namespace BxHelper\Factory;
 
 
-use BxHelper\Html\{HtmlElement, Option, SetOfElements};
+use BxHelper\Html\{BasicElement, Option, SetOfElements};
 
 /**
  * Class OptionFactory
@@ -17,7 +17,7 @@ use BxHelper\Html\{HtmlElement, Option, SetOfElements};
  */
 class OptionFactory extends HtmlFactory
 {
-    public static function create($content = null, string $value = null, array $params = []): HtmlElement
+    public static function create($content = null, string $value = null, array $params = []): BasicElement
     {
         return new Option(self::setAttributes($params, ['value' => $value]), self::setContent($content) );
     }

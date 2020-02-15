@@ -4,7 +4,7 @@
 namespace BxHelper\Factory;
 
 
-use BxHelper\Html\{HtmlElement, A};
+use BxHelper\Html\{BasicElement, A};
 
 /**
  * Class AFactory
@@ -17,7 +17,7 @@ use BxHelper\Html\{HtmlElement, A};
  */
 class AFactory extends HtmlFactory
 {
-    public static function create($content = null, string $href = null, array $params = []): HtmlElement
+    public static function create($content = null, string $href = null, array $params = []): BasicElement
     {
         return new A(self::setAttributes($params, ['href' => $href]), self::setContent($content) );
     }

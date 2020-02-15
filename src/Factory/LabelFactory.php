@@ -4,7 +4,7 @@
 namespace BxHelper\Factory;
 
 
-use BxHelper\Html\{HtmlElement, Label, SetOfElements, Text};
+use BxHelper\Html\{BasicElement, Label, SetOfElements, Text};
 
 /**
  * Class LabelFactory
@@ -17,12 +17,12 @@ use BxHelper\Html\{HtmlElement, Label, SetOfElements, Text};
  */
 class LabelFactory extends HtmlFactory
 {
-    public static function create($content = null, string $for = null, array $params = []): HtmlElement
+    public static function create($content = null, string $for = null, array $params = []): BasicElement
     {
         return new Label(self::setAttributes($params, ['for' => $for]), self::setContent($content) );
     }
 
-    public static function withLabel(HtmlElement $elt, array $params)
+    public static function withLabel(BasicElement $elt, array $params)
     {
         $resultSet = new SetOfElements();
 

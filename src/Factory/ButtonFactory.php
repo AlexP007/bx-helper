@@ -4,7 +4,7 @@
 namespace BxHelper\Factory;
 
 
-use BxHelper\Html\{HtmlElement, Button};
+use BxHelper\Html\{BasicElement, Button};
 
 /**
  * Class ButtonFactory
@@ -17,7 +17,7 @@ use BxHelper\Html\{HtmlElement, Button};
  */
 class ButtonFactory extends HtmlFactory
 {
-    public static function create(string $name = null, $content = null, string $type = null, array $params = []): HtmlElement
+    public static function create(string $name = null, $content = null, string $type = null, array $params = []): BasicElement
     {
         return new Button(self::setAttributes($params, ['name' => $name, 'type' => $type]), self::setContent($content) );
     }

@@ -4,7 +4,7 @@
 namespace BxHelper\Factory;
 
 
-use BxHelper\Html\{BasicElement, HtmlElement, Text};
+use BxHelper\Html\{BasicElement, Text};
 use BxHelper\Exception\LogicException;
 use BxHelper\Traits\Thrower;
 
@@ -21,7 +21,7 @@ abstract class HtmlFactory
 {
     use Thrower;
 
-    public abstract static function create(): HtmlElement;
+    public abstract static function create(): BasicElement;
 
     protected static function setAttributes(array $params, $otherAttributes = [])
     {

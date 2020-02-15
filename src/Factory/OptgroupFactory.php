@@ -4,7 +4,7 @@
 namespace BxHelper\Factory;
 
 
-use BxHelper\Html\{HtmlElement, Optgroup};
+use BxHelper\Html\{BasicElement, Optgroup};
 
 /**
  * Class OptgroupFactory
@@ -17,7 +17,7 @@ use BxHelper\Html\{HtmlElement, Optgroup};
  */
 class OptgroupFactory extends HtmlFactory
 {
-    public static function create(string $label = null, $content = null, array $params = []): HtmlElement
+    public static function create(string $label = null, $content = null, array $params = []): BasicElement
     {
         return new Optgroup(self::setAttributes($params, ['label' => $label]), self::setContent($content) );
     }

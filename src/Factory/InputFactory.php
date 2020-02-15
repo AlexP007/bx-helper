@@ -4,7 +4,7 @@
 namespace BxHelper\Factory;
 
 
-use BxHelper\Html\{HtmlElement, Input};
+use BxHelper\Html\{BasicElement, Input};
 
 /**
  * Class InputFactory
@@ -17,7 +17,7 @@ use BxHelper\Html\{HtmlElement, Input};
  */
 class InputFactory extends HtmlFactory
 {
-    public static function create(string $type = null, string $name = null, string $value = null, array $params = []): HtmlElement
+    public static function create(string $type = null, string $name = null, string $value = null, array $params = []): BasicElement
     {
         self::ensureParameter($type, 'For input yor must specify type');
 
