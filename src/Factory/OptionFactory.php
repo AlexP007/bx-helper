@@ -17,7 +17,7 @@ use BxHelper\Html\{HtmlElement, Option, SetOfElements};
  */
 class OptionFactory extends HtmlFactory
 {
-    public static function create(string $content = null, string $value = null, array $params = []): HtmlElement
+    public static function create($content = null, string $value = null, array $params = []): HtmlElement
     {
         return new Option(self::setAttributes($params, ['value' => $value]), self::setContent($content) );
     }

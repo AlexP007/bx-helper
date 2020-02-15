@@ -17,7 +17,7 @@ use BxHelper\Html\{HtmlElement, Select};
  */
 class SelectFactory extends HtmlFactory
 {
-    public static function create(string $name = null, $content = null,  array $params = []): HtmlElement
+    public static function create($name = null, $content = null,  array $params = []): HtmlElement
     {
         self::ensureParameter(is_array($content) || is_string($content), 'Select::render 2nd parameter $content could only be string or array');
 

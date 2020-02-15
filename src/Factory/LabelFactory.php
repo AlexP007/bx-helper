@@ -17,7 +17,7 @@ use BxHelper\Html\{HtmlElement, Label, Text};
  */
 class LabelFactory extends HtmlFactory
 {
-    public static function create(string $content = null, string $for = null, array $params = []): HtmlElement
+    public static function create($content = null, string $for = null, array $params = []): HtmlElement
     {
         return new Label(self::setAttributes($params, ['for' => $for]), self::setContent($content) );
     }
