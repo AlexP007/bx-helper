@@ -29,9 +29,7 @@ abstract class HtmlFactory
 
         foreach ($otherAttributes as $key => $value)
         {
-            if (!is_null($value) ) {
-                $attributes[$key] = $value;
-            }
+            $attributes[$key] = $value;
         }
 
         return $attributes;
