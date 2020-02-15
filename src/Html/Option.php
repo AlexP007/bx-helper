@@ -20,7 +20,7 @@ class Option extends ElementWithContent
         $this->setName('option');
     }
 
-    public static function render(string $content = null, string $value = null, array $params = []): string
+    public static function create(string $content = null, string $value = null, array $params = []): string
     {
         $attributes = $params['attributes'] ?? [];
 
@@ -28,28 +28,26 @@ class Option extends ElementWithContent
             $attributes['value'] = $value;
         }
 
-        $option = new Option($attributes);
-        $option->setContent($content);
-
-        return $option->renderHtml();
+        $option = new Option($attributes, $content);
+        return $option->render();
     }
 
     public static function renderFromArray(array $array): string
     {
-        $optionsString = '';
+        $resultSet = new SetOfElements();
 
         foreach ($array as $key => $item) {
             self::ensureParameter(is_array($item), 'Options must be arrays');
 
             if (is_string($key) ) {
-                $options = self::renderFromArray($item['options']);
-                $optionsString .= Optgroup::render($key, $options, $item['attributes'] ?? []);
+                $setOfOptions = self::renderFromArray($item['options']);
+                $optionsString .= Optgroup::create($key, $setOfOptions, $item['attributes'] ?? []);
             } else {
                 $optionParams = $item['params'] ?? [];
-                $optionsString .= self::render($item['content'], $item['value'], $optionParams);
+                $optionsString .= self::create($item['content'], $item['value'], $optionParams);
             }
         }
 
-        return $optionsString;
+        return $set;
     }
 }

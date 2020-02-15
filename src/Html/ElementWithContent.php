@@ -4,7 +4,7 @@
 namespace BxHelper\Html;
 
 
-use BxHelper\Registry\HtmlConfig;
+use BxHelper\Interfaces\Content;
 
 /**
  * Class Element
@@ -18,29 +18,34 @@ use BxHelper\Registry\HtmlConfig;
 abstract class ElementWithContent extends HtmlElement
 {
     /**
-     * @var string
+     * @var BasicElement
      *
      * Content of the element
      */
-    private $content = null;
+    private $content;
+
+    final public function __construct(array $attributes, BasicElement $content = null)
+    {
+        $this->setContent($content);
+        parent::__construct($attributes);
+    }
 
     public final function render(): string
     {
         return "<{$this->name}" . $this->getAttributesString() . ">"
-            . $this->content . "</$this->name>";
+            . $this->getContent() . "</$this->name>";
     }
 
     /**
-     * @param string $content
+     * @param BasicElement $content
      */
-    public final function setContent(string $content)
+    private final function setContent(BasicElement $content)
     {
-        $contentFilter = HtmlConfig::get('content-filter');
+        $this->content = $content;
+    }
 
-        if (isset($contentFilter) && is_callable($contentFilter) ) {
-            $this->content = call_user_func($contentFilter , $content);
-        } else {
-            $this->content = $content;
-        }
+    private final function getContent(): string
+    {
+        return $this->content->render();
     }
 }

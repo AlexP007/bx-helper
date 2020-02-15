@@ -20,7 +20,7 @@ class Label extends ElementWithContent
         $this->setName('label');
     }
 
-    public static function render(string $content = null, string $for = null, array $params = []): string
+    public static function create(BasicElement $content = null, string $for = null, array $params = []): string
     {
         $attributes = $params['attributes'] ?? [];
 
@@ -28,10 +28,8 @@ class Label extends ElementWithContent
             $attributes['for'] = $for;
         }
 
-        $label = new Label($attributes);
-        $label->setContent($content);
-
-        return $label->renderHtml();
+        $label = new Label($attributes, $content);
+        return $label->render();
     }
 
     public static function withLabel(BasicElement $elt, array $params)
@@ -40,10 +38,10 @@ class Label extends ElementWithContent
         self::ensureParameter($inputId, 'To create label you need to specify id for input');
 
         $positionBefore = $params['position'] === 'before' ? true : false;
-        $content = $params['content'] ?? '';
+        $content = $params['content'] ? new Text($params['content'], $params['useFilter']) : null;
 
-        $label = self::render($content, $inputId, $params);
+        $label = self::create($content, $inputId, $params);
 
-        return $positionBefore ? $label . $elt->renderHtml() : $elt->renderHtml() . $label;
+        return $positionBefore ? $label . $elt->render() : $elt->render() . $label;
     }
 }

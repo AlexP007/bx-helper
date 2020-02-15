@@ -28,7 +28,7 @@ abstract class HtmlElement extends BasicElement
      */
     private $attributes = null;
 
-    public final function __construct(array $attributes)
+    public function __construct(array $attributes)
     {
         if (!empty($attributes) ) {
             $this->setAttributes($attributes);

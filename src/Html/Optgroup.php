@@ -11,15 +11,13 @@ class Optgroup extends ElementWithContent
         $this->setName('optgroup');
     }
 
-    public static function render(string $label, string $content, array $attributes): string
+    public static function create(string $label, BasicElement $content, array $attributes): string
     {
         if ($label) {
             $attributes['label'] = $label;
         }
 
-        $optgroup = new Optgroup($attributes);
-        $optgroup->setContent($content);
-
-        return $optgroup->renderHtml();
+        $optgroup = new Optgroup($attributes, $content);
+        return $optgroup->render();
     }
 }

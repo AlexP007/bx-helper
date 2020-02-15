@@ -20,7 +20,7 @@ class Input extends ElementWithoutContent
         $this->setName('input');
     }
 
-    public static function render(string $type, string $name = null, string $value = null, array $params = []): string
+    public static function create(string $type, string $name = null, string $value = null, array $params = []): string
     {
         $attributes = $params['attributes'] ?? [];
 
@@ -40,6 +40,6 @@ class Input extends ElementWithoutContent
             return Label::withLabel($input, $params['label']);
         }
 
-        return $input->renderHtml();
+        return $input->render();
     }
 }

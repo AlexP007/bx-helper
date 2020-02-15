@@ -20,7 +20,7 @@ class A extends ElementWithContent
        $this->setName('a');
    }
 
-   public static function render(string $content = null, string $href = null, array $params = []): string
+   public static function create(BasicElement $content = null, string $href = null, array $params = []): string
    {
        $attributes = $params['attributes'] ?? [];
 
@@ -28,9 +28,7 @@ class A extends ElementWithContent
            $attributes['href'] = $href;
        }
 
-       $a = new A($attributes);
-       $a->setContent($content);
-
-       return $a->renderHtml();
+       $a = new A($attributes, $content);
+       return $a->render();
    }
 }
