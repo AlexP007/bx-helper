@@ -4,7 +4,7 @@
 namespace BxHelper\Factory;
 
 
-use BxHelper\Html\{HtmlElement, Label, Text};
+use BxHelper\Html\{HtmlElement, Label, SetOfElements, Text};
 
 /**
  * Class LabelFactory
@@ -24,15 +24,23 @@ class LabelFactory extends HtmlFactory
 
     public static function withLabel(HtmlElement $elt, array $params)
     {
+        $resultSet = new SetOfElements();
+
         $inputId = $elt->getAttribute('id');
         self::ensureParameter($inputId, 'To create label you need to specify id for input');
 
         $positionBefore = $params['position'] === 'before' ? true : false;
         $content = $params['content'] ? new Text($params['content'], $params['useFilter']) : null;
+        $label = self::create($content, $inputId, $params);
 
-        $label = self::create($content, $inputId, $params)->render();
-        $elt = $elt->render();
+        if ($positionBefore) {
+            $resultSet->set($label);
+            $resultSet->set($elt);
+        } else {
+            $resultSet->set($elt);
+            $resultSet->set($label);
+        }
 
-        return $positionBefore ? $label . $elt : $elt . $label;
+        return $resultSet;
     }
 }
