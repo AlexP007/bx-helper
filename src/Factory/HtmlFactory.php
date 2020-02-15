@@ -4,10 +4,8 @@
 namespace BxHelper\Factory;
 
 
+use BxHelper\Html\{BasicElement, HtmlElement, Text};
 use BxHelper\Exception\LogicException;
-use BxHelper\Html\BasicElement;
-use BxHelper\Html\HtmlElement;
-use BxHelper\Html\Text;
 use BxHelper\Traits\Thrower;
 
 /**

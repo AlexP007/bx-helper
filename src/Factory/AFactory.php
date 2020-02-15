@@ -4,8 +4,7 @@
 namespace BxHelper\Factory;
 
 
-use BxHelper\Html\A;
-use BxHelper\Html\HtmlElement;
+use BxHelper\Html\{HtmlElement, A};
 
 /**
  * Class AFactory

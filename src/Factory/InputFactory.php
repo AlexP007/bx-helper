@@ -5,7 +5,6 @@ namespace BxHelper\Factory;
 
 
 use BxHelper\Html\{HtmlElement, Input};
-use BxHelper\Html\Label;
 
 /**
  * Class InputFactory

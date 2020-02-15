@@ -4,7 +4,7 @@
 namespace BxHelper\Factory;
 
 
-use BxHelper\Html\{HtmlElement, Optgroup, Option, SetOfElements};
+use BxHelper\Html\{HtmlElement, Option, SetOfElements};
 
 /**
  * Class OptionFactory

@@ -4,7 +4,6 @@
 namespace BxHelper\Html;
 
 
-use BxHelper\Collection\StringCollection;
 use BxHelper\Traits\Thrower;
 
 /**

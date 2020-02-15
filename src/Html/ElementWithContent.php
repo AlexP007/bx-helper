@@ -4,8 +4,6 @@
 namespace BxHelper\Html;
 
 
-use BxHelper\Interfaces\Content;
-
 /**
  * Class Element
  * @package BxHelper\Html
