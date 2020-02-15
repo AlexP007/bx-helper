@@ -33,7 +33,7 @@ class OptionFactory extends HtmlFactory
                 $setOfOptions = self::fromArray($item['options']);
                 $resultSet->set(OptgroupFactory::create($key, $setOfOptions, $item['attributes'] ?? []) );
             } else {
-                $resultSet->set(self::create($item['content'], $item['value'], $item['params'] ?? []) );
+                $resultSet->set(self::create($item['content'], $item['value'], $item['attributes'] ?? []) );
             }
         }
 
