@@ -22,7 +22,7 @@ class LabelFactory extends HtmlFactory
         return new Label(self::setAttributes($params, ['for' => $for]), self::setContent($content) );
     }
 
-    public static function withLabel(BasicElement $elt, array $params)
+    public static function withLabel(BasicElement $elt, array $params): SetOfElements
     {
         $resultSet = new SetOfElements();
 

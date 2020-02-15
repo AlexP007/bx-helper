@@ -22,7 +22,7 @@ class OptionFactory extends HtmlFactory
         return new Option(self::setAttributes($params, ['value' => $value]), self::setContent($content) );
     }
 
-    public static function fromArray(array $array): string
+    public static function fromArray(array $array): SetOfElements
     {
         $resultSet = new SetOfElements();
 
