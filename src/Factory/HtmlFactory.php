@@ -44,12 +44,16 @@ abstract class HtmlFactory
      */
     protected static function setContent($content): BasicElement
     {
+        if (is_null($content) ) {
+            return null;
+        }
+
         if ($content instanceof BasicElement) {
             return $content;
         } elseif (is_string($content) ) {
             return new Text($content);
         } else {
-            throw new LogicException('Content could be only Element or string');
+            throw new LogicException('Content could be only Element, string or null');
         }
     }
 }
