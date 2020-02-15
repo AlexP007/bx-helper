@@ -39,12 +39,12 @@ abstract class ElementWithContent extends HtmlElement
     /**
      * @param BasicElement $content
      */
-    private final function setContent(BasicElement $content)
+    protected final function setContent(BasicElement $content)
     {
         $this->content = $content;
     }
 
-    private final function getContent(): string
+    protected final function getContent(): string
     {
         return $this->content ? $this->content->render() : '';
     }
