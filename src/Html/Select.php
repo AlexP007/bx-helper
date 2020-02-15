@@ -19,23 +19,4 @@ class Select extends ElementWithContent
     {
         $this->setName('select');
     }
-
-    public static function create(string $name = null, BasicElement $content = null, array $params = []): string
-    {
-        self::ensureParameter(is_array($content) || is_string($content), 'Select::render 2nd parameter $content could only be string or array');
-
-        $attributes = $params['attributes'] ?? [];
-
-        if ($name) {
-            $attributes['name'] = $name;
-        }
-
-        $select = new Select($attributes, $content);
-
-        if (!empty($params['label']) ) {
-            return Label::withLabel($select, $params['label']);
-        }
-
-        return $select->render();
-    }
 }

@@ -19,16 +19,4 @@ class A extends ElementWithContent
    {
        $this->setName('a');
    }
-
-   public static function create(BasicElement $content = null, string $href = null, array $params = []): string
-   {
-       $attributes = $params['attributes'] ?? [];
-
-       if ($href) {
-           $attributes['href'] = $href;
-       }
-
-       $a = new A($attributes, $content);
-       return $a->render();
-   }
 }

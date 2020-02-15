@@ -18,19 +18,4 @@ class Button extends ElementWithContent
     {
         $this->setName('button');
     }
-
-    public static function create(string $name = null, BasicElement $content = null, string $type = null, array $params = []): string
-    {
-        $attributes = $params['attributes'] ?? [];
-
-        if ($name) {
-            $attributes['name'] = $name;
-        }
-        if ($type) {
-            $attributes['type'] = $type;
-        }
-
-        $button = new Button($attributes, $content);
-        return $button->render();
-    }
 }

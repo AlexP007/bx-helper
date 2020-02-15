@@ -22,11 +22,13 @@ abstract class ElementWithContent extends HtmlElement
      *
      * Content of the element
      */
-    private $content;
+    private $content = null;
 
     final public function __construct(array $attributes, BasicElement $content = null)
     {
-        $this->setContent($content);
+        if ($content) {
+            $this->setContent($content);
+        }
         parent::__construct($attributes);
     }
 
@@ -46,6 +48,6 @@ abstract class ElementWithContent extends HtmlElement
 
     private final function getContent(): string
     {
-        return $this->content->render();
+        return $this->content ? $this->content->render() : '';
     }
 }

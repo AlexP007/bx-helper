@@ -4,8 +4,16 @@
 namespace BxHelper\Helper;
 
 
-use BxHelper\Html\{A, Input, Label, Optgroup, Option, Select, Button};
-use BxHelper\Tools\HtmlInitializer;
+use BxHelper\Factory\{
+    AFactory,
+    ButtonFactory,
+    InputFactory,
+    LabelFactory,
+    OptgroupFactory,
+    OptionFactory,
+    SelectFactory
+};
+
 use BxHelper\Traits\Thrower;
 
 /**
@@ -21,21 +29,19 @@ class Html
 {
     use Thrower;
 
-    static $initializer = HtmlInitializer::class;
-
     public static function a(string $content = null, string $href = null, array $params = []): string
     {
-        return A::render($content, $href, $params);
+        return AFactory::create($content, $href, $params)->render();
     }
 
     public static function Label(string $content = null, string $for = null, array $params = []): string
     {
-        return Label::render($content, $for, $params);
+        return LabelFactory::create($content, $for, $params)->render();
     }
 
     public static function input(string $type, string $name = null, string $value = null, array $params = []): string
     {
-        return Input::render($type, $name, $value, $params);
+        return InputFactory::create($type, $name, $value, $params)->render();
     }
 
     public static function hidden(string $name = null, string $value = null, array $params = []): string
@@ -90,22 +96,21 @@ class Html
 
     public static function option(string $content = null, string $value = null, array $params = []): string
     {
-        return Option::render($content, $value, $params);
+        return OptionFactory::create($content, $value, $params)->render();
     }
 
     public static function optgroup(string $label, string $content, array $params = []): string
     {
-        $attributes = $params['attributes'] ?? [];
-        return Optgroup::render($label, $content, $attributes);
+       return OptgroupFactory::create($label, $content, $params)->render();
     }
 
     public static function select(string $name = null, $content = null,  array $params = []): string
     {
-        return Select::render($name, $content, $params);
+        return SelectFactory::create($name, $content, $params)->render();
     }
 
     public static function button(string $name = null, string $content = null, string $type = null, array $params = []): string
     {
-        return Button::render($name, $content, $type, $params);
+        return ButtonFactory::create($name, $content, $type, $params)->render();
     }
 }
