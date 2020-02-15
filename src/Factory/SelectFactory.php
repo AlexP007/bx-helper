@@ -23,7 +23,7 @@ class SelectFactory extends HtmlFactory
 
         if (is_array($content) ) {
 
-            if (!isset($params['prompt']) ) {
+            if (isset($params['prompt']) ) {
                 array_unshift($content, [
                     'content' => $params['prompt'],
                     'value' => '',
