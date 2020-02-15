@@ -4,16 +4,16 @@
 namespace BxHelper\Helper;
 
 
-use BxHelper\Factory\{
-    AFactory,
+use BxHelper\Factory\{AFactory,
     ButtonFactory,
+    FormFactory,
     InputFactory,
     LabelFactory,
     OptgroupFactory,
     OptionFactory,
-    SelectFactory
-};
+    SelectFactory};
 
+use BxHelper\Html\Form;
 use BxHelper\Traits\Thrower;
 
 /**
@@ -112,5 +112,10 @@ class Html
     public static function button(string $name = null, string $content = null, string $type = null, array $params = []): string
     {
         return ButtonFactory::create($name, $content, $type, $params)->render();
+    }
+
+    public static function form($params = [] ): Form
+    {
+        return FormFactory::create(null, $params);
     }
 }
