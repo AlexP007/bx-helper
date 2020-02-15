@@ -32,7 +32,7 @@ class Option extends ElementWithContent
         return $option->render();
     }
 
-    public static function renderFromArray(array $array): string
+    public static function fromArray(array $array): string
     {
         $resultSet = new SetOfElements();
 

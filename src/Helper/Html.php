@@ -5,6 +5,7 @@ namespace BxHelper\Helper;
 
 
 use BxHelper\Html\{A, Input, Label, Optgroup, Option, Select, Button};
+use BxHelper\Tools\HtmlInitializer;
 use BxHelper\Traits\Thrower;
 
 /**
@@ -19,6 +20,8 @@ use BxHelper\Traits\Thrower;
 class Html
 {
     use Thrower;
+
+    static $initializer = HtmlInitializer::class;
 
     public static function a(string $content = null, string $href = null, array $params = []): string
     {
