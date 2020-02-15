@@ -22,6 +22,15 @@ class SelectFactory extends HtmlFactory
         self::ensureParameter(is_array($content) || is_string($content), 'Select::render 2nd parameter $content could only be string or array');
 
         if (is_array($content) ) {
+
+            if (!isset($params['prompt']) ) {
+                $prompt = [
+                    'content' => $params['prompt'],
+                    'value' => '',
+                    'attributes' => ['disabled' => null]
+                ];
+            }
+            array_unshift($content, $prompt);
             $content = OptionFactory::fromArray($content);
         }
 
