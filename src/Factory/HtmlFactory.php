@@ -39,10 +39,10 @@ abstract class HtmlFactory
 
     /**
      * @param $content
-     * @return BasicElement
+     * @return BasicElement|Text|null
      * @throws LogicException
      */
-    protected static function setContent($content): BasicElement
+    protected static function setContent($content)
     {
         if (is_null($content) ) {
             return null;
