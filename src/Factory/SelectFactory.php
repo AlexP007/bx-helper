@@ -19,7 +19,10 @@ class SelectFactory extends HtmlFactory
 {
     public static function create($name = null, $content = null,  array $params = []): BasicElement
     {
-        self::ensureParameter(is_array($content) || is_string($content), 'Select::render 2nd parameter $content could only be string or array');
+        is_null($content) or self::ensureParameter(
+            is_array($content) || is_string($content),
+            'Select::render 2nd parameter $content could only be string or array'
+        );
 
         if (is_array($content) ) {
 
