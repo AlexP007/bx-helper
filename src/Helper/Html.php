@@ -27,94 +27,108 @@ use BxHelper\Traits\Thrower;
  */
 class Html
 {
-    use Thrower;
+    private static $instance;
 
-    public static function a(string $content = null, string $href = null, array $params = []): string
+    use Thrower;
+    
+    private final function __construct()
+    {
+    }
+
+    public static function getInstance()
+    {
+        if (!self::$instance) {
+            self::$instance = new self;
+        }
+        return self::$instance;
+    }
+
+    public function a(string $content = null, string $href = null, array $params = []): string
     {
         return AFactory::create($content, $href, $params)->render();
     }
 
-    public static function Label(string $content = null, string $for = null, array $params = []): string
+    public function Label(string $content = null, string $for = null, array $params = []): string
     {
         return LabelFactory::create($content, $for, $params)->render();
     }
 
-    public static function input(string $type, string $name = null, string $value = null, array $params = []): string
+    public function input(string $type, string $name = null, string $value = null, array $params = []): string
     {
         return InputFactory::create($type, $name, $value, $params)->render();
     }
 
-    public static function hidden(string $name = null, string $value = null, array $params = []): string
+    public function hidden(string $name = null, string $value = null, array $params = []): string
     {
         return self::input('hidden', $name, $value, $params);
     }
 
-    public static function text(string $name = null, string $value = null, array $params = []): string
+    public function text(string $name = null, string $value = null, array $params = []): string
     {
         return self::input('text', $name, $value, $params);
     }
 
-    public static function submit(string $name = null, string $value = null, array $params = []): string
+    public function submit(string $name = null, string $value = null, array $params = []): string
     {
         return self::input('submit', $name, $value, $params);
     }
 
-    public static function checkbox(string $name = null, string $value = null, array $params = []): string
+    public function checkbox(string $name = null, string $value = null, array $params = []): string
     {
         return self::input('checkbox', $name, $value, $params);
     }
 
-    public static function email(string $name = null, string $value = null, array $params = []): string
+    public function email(string $name = null, string $value = null, array $params = []): string
     {
         return self::input('email', $name, $value, $params);
     }
 
-    public static function password(string $name = null, string $value = null, array $params = []): string
+    public function password(string $name = null, string $value = null, array $params = []): string
     {
         return self::input('password', $name, $value, $params);
     }
 
-    public static function file(string $name = null, string $value = null, array $params = []): string
+    public function file(string $name = null, string $value = null, array $params = []): string
     {
         return self::input('file', $name, $value, $params);
     }
 
-    public static function reset(string $name = null, string $value = null, array $params = []): string
+    public function reset(string $name = null, string $value = null, array $params = []): string
     {
         return self::input('reset', $name, $value, $params);
     }
 
-    public static function search(string $name = null, string $value = null, array $params = []): string
+    public function search(string $name = null, string $value = null, array $params = []): string
     {
         return self::input('search', $name, $value, $params);
     }
 
-    public static function radio(string $name = null, string $value = null, array $params = []): string
+    public function radio(string $name = null, string $value = null, array $params = []): string
     {
         return self::input('radio', $name, $value, $params);
     }
 
-    public static function option(string $content = null, string $value = null, array $params = []): string
+    public function option(string $content = null, string $value = null, array $params = []): string
     {
         return OptionFactory::create($content, $value, $params)->render();
     }
 
-    public static function optgroup(string $label, string $content, array $params = []): string
+    public function optgroup(string $label, string $content, array $params = []): string
     {
        return OptgroupFactory::create($label, $content, $params)->render();
     }
 
-    public static function select(string $name = null, $content = null,  array $params = []): string
+    public function select(string $name = null, $content = null,  array $params = []): string
     {
         return SelectFactory::create($name, $content, $params)->render();
     }
 
-    public static function button(string $name = null, string $content = null, string $type = null, array $params = []): string
+    public function button(string $name = null, string $content = null, string $type = null, array $params = []): string
     {
         return ButtonFactory::create($name, $content, $type, $params)->render();
     }
 
-    public static function form($params = [] ): Form
+    public function form($params = [] ): Form
     {
         return FormFactory::create(null, $params);
     }
