@@ -11,6 +11,8 @@ use BxHelper\Factory\{AFactory,
     LabelFactory,
     OptgroupFactory,
     OptionFactory,
+    DivFactory,
+    SpanFactory,
     SelectFactory};
 
 use BxHelper\Html\Form;
@@ -48,7 +50,17 @@ class Html
         return AFactory::create($content, $href, $params)->render();
     }
 
-    public function Label(string $content = null, string $for = null, array $params = []): string
+    public function div(string $content = null, string $class = null, array $params = []): string
+    {
+        return DivFactory::create($content, $class, $params)->render();
+    }
+
+    public function span(string $content = null, string $class = null, array $params = []): string
+    {
+        return SpanFactory::create($content, $class, $params)->render();
+    }
+
+    public function label(string $content = null, string $for = null, array $params = []): string
     {
         return LabelFactory::create($content, $for, $params)->render();
     }
