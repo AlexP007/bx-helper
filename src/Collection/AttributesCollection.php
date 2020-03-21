@@ -28,7 +28,7 @@ class AttributesCollection extends Collection
         parent::__set($name, $value);
     }
 
-    public function __get(string $name): string
+    public function __get(string $name)
     {
         return parent::__get($name);
     }
