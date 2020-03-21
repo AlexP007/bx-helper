@@ -30,7 +30,7 @@ class SelectFactory extends HtmlFactory
                 array_unshift($content, [
                     'content' => $params['prompt'],
                     'value' => '',
-                    'attributes' => ['disabled' => null, 'selected' => null]
+                    'attributes' => ['disabled' => true, 'selected' => true]
                 ]);
             }
             $content = OptionFactory::fromArray($content);
