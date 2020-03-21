@@ -21,7 +21,7 @@ class AttributesCollection extends Collection
     public function __set(string $name, $value)
     {
         self::ensureParameter(
-            is_string($value) || is_null($value),
+            is_string($value) || is_null($value) || $value === true,
             'Attributes can only be strings, null or true'
         );
 
