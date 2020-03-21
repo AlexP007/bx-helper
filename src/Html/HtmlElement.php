@@ -4,7 +4,7 @@
 namespace BxHelper\Html;
 
 
-use BxHelper\Collection\StringCollection;
+use BxHelper\Collection\AttributesCollection;
 use BxHelper\Domain\Value;
 
 /**
@@ -25,7 +25,7 @@ abstract class HtmlElement extends BasicElement
     protected $name;
 
     /**
-     * @var StringCollection
+     * @var AttributesCollection
      */
     private $attributes = null;
 
@@ -56,7 +56,7 @@ abstract class HtmlElement extends BasicElement
 
     protected function setAttributes(array $attributes)
     {
-        $collection = new StringCollection();
+        $collection = new AttributesCollection();
         $collection->setArrayToCollection($attributes);
 
         $this->attributes = $collection;
