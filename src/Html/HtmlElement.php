@@ -82,10 +82,15 @@ abstract class HtmlElement extends BasicElement
             $attribute = strtolower($key);
 
             if (is_null($value) ) {
-                $result .= "$attribute ";
-            } else {
+                continue; // если null ничего не делаем
+            }
+            if ($value === true) {
+                $result .= "$attribute "; // аттрибут без значения
+                continue;
+            }
+            if (is_string($value) ) { // только строка
                 if ($key === 'value') {
-                    $value = $this->getValue($value);
+                    $value = $this->getValue($value); // чтобы отработали обработчики
                 }
                 $result .= "$attribute=\"$value\" ";
             }
