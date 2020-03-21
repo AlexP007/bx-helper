@@ -9,7 +9,7 @@ use BxHelper\Traits\Thrower;
 /**
  * Class Collection
  * @package BxHelper\Collection
- * @license Apache-2.0
+ * @license MIT
  *
  * @author AlexP007
  * @email alex.p.panteleev@gmail.com

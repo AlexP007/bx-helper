@@ -9,7 +9,7 @@ use BxHelper\Html\{BasicElement, Select};
 /**
  * Class SelectFactory
  * @package BxHelper\Factory
- * @license Apache-2.0
+ * @license MIT
  *
  * @author AlexP007
  * @email alex.p.panteleev@gmail.com

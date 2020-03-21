@@ -9,7 +9,7 @@ use BxHelper\Html\{BasicElement, Optgroup};
 /**
  * Class OptgroupFactory
  * @package BxHelper\Factory
- * @license Apache-2.0
+ * @license MIT
  *
  * @author AlexP007
  * @email alex.p.panteleev@gmail.com
