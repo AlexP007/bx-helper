@@ -13,7 +13,7 @@ namespace BxHelper\Html;
  * @email alex.p.panteleev@gmail.com
  * @link https://github.com/AlexP007/bx-helper
  */
-class H6 extends ElementWithContent
+class H6 extends BasicHeading
 {
     protected function init()
     {

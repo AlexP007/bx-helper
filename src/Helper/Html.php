@@ -13,9 +13,11 @@ use BxHelper\Factory\{AFactory,
     OptionFactory,
     DivFactory,
     SpanFactory,
-    SelectFactory};
+    SelectFactory,
+    HeadingFactory
+};
 
-use BxHelper\Html\Form;
+use BxHelper\Html\{BasicHeading, Form};
 use BxHelper\Traits\Thrower;
 
 /**
@@ -143,5 +145,10 @@ class Html
     public function form($params = [] ): Form
     {
         return FormFactory::create(null, $params);
+    }
+
+    public function heading(string $type, string $content = null, array $params = [] ): string
+    {
+        return HeadingFactory::create($type, $content, $params)->render();
     }
 }

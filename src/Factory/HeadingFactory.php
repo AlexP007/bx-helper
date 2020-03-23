@@ -5,7 +5,7 @@ namespace BxHelper\Factory;
 
 
 use BxHelper\Html\BasicElement;
-use BxHelper\Html\{H1, H2, H3, H4, H5, H6};
+use BxHelper\Html\{BasicHeading, H1, H2, H3, H4, H5, H6};
 
 /**
  * Class HeadingFactory
