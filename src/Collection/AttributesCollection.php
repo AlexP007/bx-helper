@@ -22,7 +22,7 @@ class AttributesCollection extends Collection
     {
         self::ensureParameter(
             is_string($value) || is_null($value) || $value === true,
-            'Attributes can only be strings, null or true'
+            "Attribute $name can only be string, null or true"
         );
 
         parent::__set($name, $value);
