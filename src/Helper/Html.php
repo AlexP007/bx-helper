@@ -152,7 +152,7 @@ class Html
         return HeadingFactory::create($type, $content, $params)->render();
     }
 
-    public function iframe(string $url, string $class = null, array $params = []): string
+    public function iframe(string $url = null, string $class = null, array $params = []): string
     {
         return IframeFactory::create($url, $class, $params)->render();
     }
