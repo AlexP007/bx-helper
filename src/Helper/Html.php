@@ -7,6 +7,7 @@ namespace BxHelper\Helper;
 use BxHelper\Factory\{AFactory,
     ButtonFactory,
     FormFactory,
+    IframeFactory,
     InputFactory,
     LabelFactory,
     OptgroupFactory,
@@ -14,10 +15,9 @@ use BxHelper\Factory\{AFactory,
     DivFactory,
     SpanFactory,
     SelectFactory,
-    HeadingFactory
-};
+    HeadingFactory};
 
-use BxHelper\Html\{BasicHeading, Form};
+use BxHelper\Html\{Form, Iframe};
 use BxHelper\Traits\Thrower;
 
 /**
@@ -147,8 +147,13 @@ class Html
         return FormFactory::create(null, $params);
     }
 
-    public function heading(string $type, string $content = null, array $params = [] ): string
+    public function heading(string $type, string $content = null, array $params = []): string
     {
         return HeadingFactory::create($type, $content, $params)->render();
+    }
+
+    public function iframe(string $url, string $class = null, array $params = []): string
+    {
+        return IframeFactory::create($url, $class, $params)->render();
     }
 }

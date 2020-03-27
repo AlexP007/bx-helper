@@ -3,8 +3,9 @@
 
 namespace BxHelper\Html;
 
+
 /**
- * Class Button
+ * Class Iframe
  * @package BxHelper\Html
  * @license MIT
  *
@@ -12,10 +13,10 @@ namespace BxHelper\Html;
  * @email alex.p.panteleev@gmail.com
  * @link https://github.com/AlexP007/bx-helper
  */
-class Button extends ElementWithContent
+class Iframe extends ElementWithContent
 {
     protected function init()
     {
-        $this->setName('button');
+        $this->setName('iframe');
     }
 }
