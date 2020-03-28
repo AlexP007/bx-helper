@@ -22,7 +22,7 @@ class IframeFactory extends HtmlFactory
         $attributes = $params['attributes'] ?? [];
 
         if (!isset($attributes['style']) ) {
-            $attributes['style'] = 'width: 100%; height: 100%';
+            $attributes['style'] = 'width: 100%; height: 100%;';
         }
 
         $attributes = array_merge($attributes, [
